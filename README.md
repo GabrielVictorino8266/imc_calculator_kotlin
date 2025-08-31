@@ -1,2 +1,2 @@
-# imc_calculator_kotlin
+# Atividade: Calculadora IMC
 Projeto desenvolvido para atividade da matéria Programação Para Dispositivos Móveis I
