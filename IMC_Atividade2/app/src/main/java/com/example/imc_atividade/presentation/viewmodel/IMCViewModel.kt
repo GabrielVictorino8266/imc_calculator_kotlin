@@ -19,7 +19,7 @@ class IMCViewModel() : ViewModel() {
 
     fun calcularIMC(peso: Double, altura: Double){
         if(!UtilImc.isPositiveNumber(peso)
-            && !UtilImc.isPositiveNumber(altura)){
+            || !UtilImc.isPositiveNumber(altura)){
             _erroIMC.value = "Existem valores em branco ou zerados, preencha eles e continue."
             return
         }
