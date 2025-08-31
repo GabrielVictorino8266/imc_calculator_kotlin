@@ -5,4 +5,6 @@ object UtilImc {
         return value != null && value > 0.0
     }
 
+    const val EMPTY_VALUE = ""
+
 }

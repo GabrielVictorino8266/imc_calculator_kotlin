@@ -1,6 +1,7 @@
 package com.example.imc_atividade.presentation.ui
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -12,6 +13,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.imc_atividade.R
 import com.example.imc_atividade.presentation.viewmodel.IMCViewModel
+import com.example.imc_atividade.util.UtilImc
 
 
 class MainActivity : AppCompatActivity() {
@@ -31,12 +33,22 @@ class MainActivity : AppCompatActivity() {
         val alturaInput = findViewById<EditText>(R.id.alturaInputDecimal)
         val btnCalcular = findViewById<Button>(R.id.btnCalcularIMC)
         val labelResultado = findViewById<TextView>(R.id.txtResposta)
+        val limparBtn = findViewById<Button>(R.id.limparBtn)
+            limparBtn.visibility = View.INVISIBLE
 
         btnCalcular.setOnClickListener{
             val peso = pesoInput.text.toString().toDoubleOrNull() ?: 0.0
             val altura = alturaInput.text.toString().toDoubleOrNull() ?: 0.0
 
             viewModel.calcularIMC(peso, altura)
+            limparBtn.visibility = View.VISIBLE
+        }
+
+        limparBtn.setOnClickListener{
+            pesoInput.text.clear()
+            alturaInput.text.clear()
+            labelResultado.text = UtilImc.EMPTY_VALUE
+            limparBtn.visibility = View.INVISIBLE
         }
 
         viewModel.resultadoIMC.observe(this) { resultado ->
